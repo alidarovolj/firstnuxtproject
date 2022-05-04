@@ -18,7 +18,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@loadingio/css-spinner/index.min.css'
+    '@loadingio/css-spinner/index.min.css',
+    './assets/fonts.css',
+    './assets/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -50,5 +52,20 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: 'main',
+        path: '/singlePage',
+        component: resolve(__dirname, 'components/MainPage.vue')
+      },
+      {
+        name: 'about',
+        path: '/about',
+        component: resolve(__dirname, 'components/AboutPage.vue')
+      })
+    }
   }
 }
